@@ -101,5 +101,8 @@ stages:
                           kubectl get pods -n "$(k8sNamespace)"
                           kubectl describe pods -n "$(k8sNamespace)" -l app.kubernetes.io/instance=$(releaseName)
                           exit 1
-                        } 
+                        }
+
+                      echo "=== Deployment Succeeded! Fetching Service & External IP ==="
+                      kubectl get svc -n "$(k8sNamespace)"
   
