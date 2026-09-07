@@ -96,4 +96,10 @@ stages:
                         --set image.repository="$(acrLoginServer)/$(imageRepository)" \
                         --set image.tag="$(tag)" \
                         --wait \
-                        --timeout 10m
+                        --timeout 5m || {
+                          echo "=== Helm failed! Inspecting Pod status and events ==="
+                          kubectl get pods -n "$(k8sNamespace)"
+                          kubectl describe pods -n "$(k8sNamespace)" -l app.kubernetes.io/instance=$(releaseName)
+                          exit 1
+                        } 
+  
