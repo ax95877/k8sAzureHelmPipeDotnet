@@ -9,7 +9,7 @@ variables:
   azureSubscriptionEndpoint: 'aks-service-connection'        # Name of your Azure Resource Manager service connection
 
   # ACR Configuration
-  acrLoginServer: 'ax888acr.azurecr.io'                         # Your ACR login server (e.g. <name>.azurecr.io)
+  acrLoginServer: 'youracr.azurecr.io'                         # Your ACR login server (e.g. <name>.azurecr.io)
   imageRepository: 'k8s-app'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
